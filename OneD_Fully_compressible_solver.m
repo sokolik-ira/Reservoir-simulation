@@ -47,7 +47,7 @@ for Nt = 1:100
     rho_n = rho;
     phi_n = phi;
     % Find P_n+1
-    Residual = ComputeResidual( rho_n, phi_n, rho, phi, Lambda, dt, p, q, N, DX );
+    Residual = ComputeResidual(rho_n, phi_n, rho, phi, T, dt, p, q, N)
     
     while Converged == 0
         % Build Jacobian J = A + C
@@ -90,7 +90,7 @@ for Nt = 1:100
         q = ComputeWellFluxes( pw, p, PI, Lambda, cellno, N );
         
         % Compure Residual
-        Residual = ComputeResidual( rho_n, phi_n, rho, phi, Lambda, dt, p, q, N, DX );
+        Residual = ComputeResidual(rho_n, phi_n, rho, phi, T, dt, p, q, N) ;
         
         % Convergence criteria
         if norm(Residual)<1e-6
